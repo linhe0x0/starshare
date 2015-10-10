@@ -92,10 +92,18 @@ block content
               span(aria-hidden="true") &times;
             h4#modal-about-this-site-title.modal-title About This Site
           .modal-body
-            p ...
+            p
+              | 我是
+              a(href="http://blog.sqrtthree.com/2015/06/27/hello-world/", target="_blank") 根号三(sqrtthree)
+              | , 前端开发者, 热爱开源事业. 欢迎一起交流学习, 这是
+              a(href="http://blog.sqrtthree.com/", target="_blank") 我的博客.
+            p 这个项目最初是给自己玩的, 随着自己在 github 上 star 的项目越来越多, 导致查阅起来很麻烦, 就想着开发一个小东西来管理一下. 目前的功能还比较少, 后续我会继续维护更新.
+            p
+              | 因为自己技艺不精, 也未进行大范围测试, 难免会出现各种问题, 还希望大家能够给予
+              a(href="https://github.com/sqrthree/MyStars/issues", target="_blank") 反馈.
           .modal-footer
             button.btn.btn-default(type="button", data-dismiss="modal") Close
-            button.btn.btn-primary(type="button") donate
+            a.btn.btn-primary(href="http://7xl8me.com1.z0.glb.clouddn.com/alipay.JPG", target="_blank") donate
     #modal-edit-box.modal.fade
       .modal-dialog
         .modal-content
