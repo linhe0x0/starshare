@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>MyStars by sqrthree</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">MyStars</h1>
+      <h2 class="project-tagline">Manage your github stars.</h2>
+      <a href="https://github.com/sqrthree/MyStars" class="btn">View on GitHub</a>
+      <a href="https://github.com/sqrthree/MyStars/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/sqrthree/MyStars/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="my-github-stars" class="anchor" href="#my-github-stars" aria-hidden="true"><span class="octicon octicon-link"></span></a>My-GitHub-Stars</h1>
+
+<blockquote>
+<p>当你的 <code>github stars</code> 数目多达几十乃至几百个的时候, 你还能快捷优雅的查找项目么？</p>
+</blockquote>
+
+<p>该项目可简单的管理你的 github stars 数据. 目前提供分类、备注和查询操作. 后续会继续更新和维护.</p>
+
+<ul>
+<li>[x] 获取 github 的 stars 和 repo 数据.</li>
+<li>[x] 备注和查询操作</li>
+<li>[x] 标签管理</li>
+<li>[x] 直接复制项目地址到系统剪贴板</li>
+<li>[ ] 备注支持 markdown 语法</li>
+<li>[ ] 可直接unstar 项目</li>
+<li>[ ] 分享项目</li>
+<li>[ ] github 账号未读消息数</li>
+</ul>
+
+<p>效果预览:</p>
+
+<p><img src="https://github.com/sqrthree/MyStars/blob/master/demo/dashboard.png" alt="首页">
+<img src="https://github.com/sqrthree/MyStars/blob/master/demo/loading.png" alt="加载效果">
+<img src="https://github.com/sqrthree/MyStars/blob/master/demo/loading_02.png" alt="加载效果2">
+<img src="https://github.com/sqrthree/MyStars/blob/master/demo/nav.png" alt="标签切换">
+<img src="https://github.com/sqrthree/MyStars/blob/master/demo/tags.png" alt="标签管理"></p>
+
+<h4>
+<a id="0-环境依赖" class="anchor" href="#0-%E7%8E%AF%E5%A2%83%E4%BE%9D%E8%B5%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>0. 环境依赖</h4>
+
+<p>该项目依赖 <a href="https://nodejs.org/">node</a>、<a href="https://www.npmjs.com/">npm</a>、<a href="https://github.com/bower/bower">bower</a>、<a href="https://www.mongodb.org/">mongodb</a> 环境,  并请确保 <code>mongodb</code>环境处于开启状态.</p>
+
+<h4>
+<a id="1-安装依赖" class="anchor" href="#1-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96" aria-hidden="true"><span class="octicon octicon-link"></span></a>1. 安装依赖</h4>
+
+<ol>
+<li>
+<code>Clone</code> 项目到本地.</li>
+<li>在项目根目录执行 <code>npm install</code> 命令安装 node 依赖.</li>
+<li>在项目根目录执行 <code>bower install</code> 命令安装前端依赖的框架.</li>
+</ol>
+
+<h4>
+<a id="2-修改配置文件" class="anchor" href="#2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>2. 修改配置文件</h4>
+
+<ol>
+<li>访问 <a href="https://github.com/settings/developers">https://github.com/settings/developers</a>注册一个 APP , 其中 <code>Authorization callback URL</code> 项填写为 <code>http://localhost:3000/</code>. 申请成功后能在该页面得到 <code>Client ID</code> 和 <code>Client Secret</code>.</li>
+<li>进入 <code>config</code> 文件夹, 并将 <code>development-example.json</code> 复制另存为 <code>development.json</code> 文件.</li>
+<li>修改刚刚新创建的 <code>development.json</code> 中的配置数据, 将第一步中申请到的 <code>Client ID</code> 和 <code>Client Secret</code> 填写到对应的位置.</li>
+</ol>
+
+<h4>
+<a id="3-启动服务" class="anchor" href="#3-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1" aria-hidden="true"><span class="octicon octicon-link"></span></a>3. 启动服务.</h4>
+
+<ol>
+<li>在项目根目录执行 <code>npm start</code> 命令.</li>
+<li>打开浏览器, 访问 <code>http://localhost:3000/</code> 即可.</li>
+</ol>
+
+<h4>
+<a id="4-关于config文件夹下的文件说明" class="anchor" href="#4-%E5%85%B3%E4%BA%8Econfig%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8B%E7%9A%84%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>4. 关于<code>config/</code>文件夹下的文件说明</h4>
+
+<ul>
+<li>
+<code>*-example.json</code> 文件为示例配置文件, 程序运行时不读取这个文件. 因此需要你手动创建一个同名但不包含 <code>-example</code> 字段的文件.</li>
+<li>
+<code>development-example.json</code>文件是开发环境示例配置文件(默认), <code>production-example.json</code> 为生产环境的示例配置文件.</li>
+<li>一般如果把服务架设在本机, 只需要保证 <code>development.json</code> 文件即可.</li>
+</ul>
+
+<h4>
+<a id="5-运行方式" class="anchor" href="#5-%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F" aria-hidden="true"><span class="octicon octicon-link"></span></a>5. 运行方式</h4>
+
+<ul>
+<li>推荐使用本机环境运行.</li>
+<li>后台运行该项目可使用 <a href="https://github.com/Unitech/pm2">pm2</a> 进行进程监管.</li>
+<li>推荐使用 <a href="http://nginx.org/en/download.html">nginx</a> 绑定域名进行本地反向代理.</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/sqrthree/MyStars">MyStars</a> is maintained by <a href="https://github.com/sqrthree">sqrthree</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
