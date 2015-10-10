@@ -1,0 +1,130 @@
+extends layout
+
+block header
+  link(rel="stylesheet", href="/bower_components/angular-loading-bar/build/loading-bar.min.css")
+  link(rel="stylesheet", href="/bower_components/github-markdown-css/github-markdown.css")
+block content
+  .container-fluid(ng-controller="DashboardController")
+    .row
+      .col-md-2.slide-bar-wrap
+        .slide-bar-header
+            h3 My Stars
+        .slide-panel
+          .slide-panel-heading
+            h3.slide-panel-title STARS
+          ul.slide-list-group
+            li.slide-list-group-item(ng-class="filterTag === 'all' ? 'active' : null", ng-click="setCurrentTag('all')").
+              <span class="glyphicon glyphicon-inbox">
+              All Stars
+            li.slide-list-group-item(ng-class="filterTag === 'untagged' ? 'active' : null",ng-click="setCurrentTag('untagged')").
+              <span class="glyphicon glyphicon-star-empty">
+              Untagged Stars
+        .slide-panel
+          .slide-panel-heading
+            h3.slide-panel-title Tags
+          ul.slide-list-group
+            li.slide-list-group-item(ng-class="{'active': filterTag === tag}", ng-click="setCurrentTag(tag)", ng-repeat="tag in tagsList").
+                <span class="glyphicon glyphicon-tag">
+                {{tag}}
+      .col-md-10.content-wrap
+        .navbar.navbar-default
+          p.navbar-text Just enjoy it. : )
+          form.navbar-form.navbar-left(role="search")
+            .input-group
+              input.form-control(type="text", placeholder="Search for...", ng-model="keywords")
+              span.input-group-btn
+                button.btn.btn-default(type="button")
+                  span.glyphicon.glyphicon-search
+          .collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right
+              li
+                a.navbar-brand.dropdown-toggle(data-toggle="dropdown", role="button", aria-expanded="false", href="javascript:;")
+                  img(src="#{user._json.avatar_url}", alt="Brand")
+                  span.username #{user.username}
+                  span.caret
+                ul.dropdown-menu(role="menu")
+                  li
+                    a(href="#{user.profileUrl}", target="_blank") github
+                  li
+                    a(href="/auth/logout") Sign Out
+                  li.divider
+                  li
+                    a(href="javascript:;", data-toggle="modal", data-target="#modal-about-this-site") About This Site
+        .col-md-4.stars-list-wrap
+          .list-group
+            .list-group-item(ng-repeat="star in allStars | filter: keywords | tags: filterTag", ng-click="setCurrentStar(star)", ng-class="{'active': currentStar.id === star.id}")
+               h4(ng-bind="star.name")
+               p(ng-bind="star.description")
+               ul.label-box.clearfix
+                li
+                   span.glyphicon.glyphicon-star(ng-bind="star.stargazers_count")
+                 li
+                   span.glyphicon.glyphicon-star(ng-bind="star.forks_count")
+                 li
+                   a(href="{{star.html_url}}", target="_blank") View on GitHub
+           p.more(ng-show="(page*40) <= allStars.length && (filterTag === 'all')", ng-click="getNextStars()") more
+        .col-md-8.content-box(ng-show="repo")
+          .btn-toolbar.toolbar-box
+            .input-group.pull-right.col-md-6
+              input.form-control(type="text", readonly, value="{{repo.clone_url}}")
+              span.input-group-btn
+                button.btn.btn-default(copy)
+                  span.glyphicon.glyphicon-copy
+            .btn-group
+              .button.btn.btn-default(type="button" data-toggle="modal", data-target="#modal-tags-box")
+                span.glyphicon.glyphicon-tag
+              .button.btn.btn-default(type="button", data-toggle="modal", data-target="#modal-edit-box")
+                span.glyphicon.glyphicon-edit
+              .button.btn.btn-default(type="button")
+                span.glyphicon.glyphicon-trash
+              .button.btn.btn-default(type="button")
+                span.glyphicon.glyphicon-share
+          .content
+            .notes-box
+              blockquote(ng-show="repo.notes")
+                p {{repo.notes}}
+            .content-inner.markdown-body(ng-bind-html="repo.readme")
+    #modal-about-this-site.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type="button", data-dismiss="modal", aria-label="Close")
+              span(aria-hidden="true") &times;
+            h4#modal-about-this-site-title.modal-title About This Site
+          .modal-body
+            p ...
+          .modal-footer
+            button.btn.btn-default(type="button", data-dismiss="modal") Close
+            button.btn.btn-primary(type="button") donate
+    #modal-edit-box.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type="button", data-dismiss="modal", aria-label="Close")
+              span(aria-hidden="true") &times;
+            h4#modal-about-this-site-title.modal-title Edit
+          .modal-body
+            textarea.form-control(rows="10", cols="20", placeholder="稍后将支持 Markdown 语法", ng-bind="repo.notes", ng-model="notes")
+          .modal-footer
+            button.btn.btn-default(type="button", data-dismiss="modal") Close
+            button.btn.btn-primary(type="button", ng-click="updateNotes(notes)") Save
+    #modal-tags-box.modal.fade
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type="button", data-dismiss="modal", aria-label="Close")
+              span(aria-hidden="true") &times;
+            h4#modal-about-this-site-title.modal-title Tags
+          .modal-body
+            ul.tags-list
+              li.tag(ng-repeat="tag in repo.tags", ng-click="removeTag(tag)")
+                span(ng-bind="tag")
+                button.close(type="button")
+                  span &times;
+            .input-group
+              input.form-control(type="text", ng-model="newTags")
+              span.input-group-btn
+                button.btn.btn-default(type="button", ng-click="addTags(newTags)") 添加
+          .modal-footer
+            button.btn.btn-default(type="button", data-dismiss="modal") Close
+            button.btn.btn-primary(type="button", ng-click="updateTags()") Save

@@ -1,0 +1,20 @@
+doctype html
+html(ng-app="myStars")
+  head
+    base(href="/")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no")
+    title My Github Stars
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    block header
+  body
+    block content
+
+    script(type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js")
+    script(type="text/javascript" src="/bower_components/angular/angular.min.js")
+    script(type="text/javascript" src="/bower_components/angular-classy/angular-classy.min.js")
+    script(type="text/javascript", src="/bower_components/angular-loading-bar/build/loading-bar.min.js")
+    script(type="text/javascript", src="/bower_components/angular-sanitize/angular-sanitize.min.js")
+    script(type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js")
+    script(type="text/javascript" src="/javascripts/jquery.zeroclipboard.min.js")
+    script(type="text/javascript" src="/javascripts/app.js")

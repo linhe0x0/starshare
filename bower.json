@@ -1,0 +1,29 @@
+{
+  "name": "MyStars",
+  "version": "0.0.1",
+  "authors": [
+    "sqrtthree <sqrtthree@foxmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.1",
+    "angular-classy": "~1.1.0",
+    "angular-loading-bar": "~0.8.0",
+    "angular-route": "~1.4.5",
+    "angular-sanitize": "~1.4.4",
+    "bootstrap": "~3.3.5",
+    "github-markdown-css": "~2.0.10"
+  },
+  "devDependencies": {},
+  "resolutions": {
+    "angular": "^1.2.9"
+  }
+}

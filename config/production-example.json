@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "type": "web_server",
+        "client_id": "",
+        "client_secret": "",
+        "redirect_uri": ""
+    },
+    "mongodb": {
+        "host": "",
+        "name": ""
+    }
+}

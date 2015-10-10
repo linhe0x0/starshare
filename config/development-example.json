@@ -1,0 +1,12 @@
+{
+    "auth": {
+        "type": "web_server",
+        "client_id": "@Github_Client_Id",
+        "client_secret": "@Github_Client_Secret",
+        "redirect_uri": "http://localhost:3000/auth/callback"
+    },
+    "mongodb": {
+        "host": "localhost",
+        "name": "myStars"
+    }
+}
