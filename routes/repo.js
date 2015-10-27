@@ -31,7 +31,7 @@ exports.getNotes = function(req, res) {
 };
 
 exports.updateNotes = function(req, res) {
-    var username = req.session.username;
+    var username = req.session.user.username;
     var id = req.body.id + '';
     var notes = req.body.notes;
 
