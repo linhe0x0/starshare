@@ -30,13 +30,13 @@
 3. 在项目根目录执行 `bower install` 命令安装前端依赖的框架.
 
 #### 2. 修改配置文件
-1. 访问 [https://github.com/settings/developers](https://github.com/settings/developers)注册一个 APP , 其中 `Authorization callback URL` 项填写为 `http://localhost:3000/`. 申请成功后能在该页面得到 `Client ID` 和 `Client Secret`.
+1. 访问 [https://github.com/settings/developers](https://github.com/settings/developers)注册一个 APP , 其中 `Authorization callback URL` 项填写为 `http://localhost:1338/`. 申请成功后能在该页面得到 `Client ID` 和 `Client Secret`.
 2. 进入 `config` 文件夹, 并将 `development-example.json` 复制另存为 `development.json` 文件.
 3. 修改刚刚新创建的 `development.json` 中的配置数据, 将第一步中申请到的 `Client ID` 和 `Client Secret` 填写到对应的位置.
 
 #### 3. 启动服务.
 1. 在项目根目录执行 `npm start` 命令.
-2. 打开浏览器, 访问 `http://localhost:3000/` 即可.
+2. 打开浏览器, 访问 `http://localhost:1338/` 即可.
 
 #### 4. 关于`config/`文件夹下的文件说明
 * `*-example.json` 文件为示例配置文件, 程序运行时不读取这个文件. 因此需要你手动创建一个同名但不包含 `-example` 字段的文件.
