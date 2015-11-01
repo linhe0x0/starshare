@@ -82,7 +82,7 @@ block content
           .content
             .notes-box
               blockquote(ng-show="repo.notes")
-                p {{repo.notes}}
+                p(markdown2html="repo.notes")
             .content-inner.markdown-body(ng-bind-html="repo.readme")
     #modal-about-this-site.modal.fade
       .modal-dialog
@@ -112,7 +112,7 @@ block content
               span(aria-hidden="true") &times;
             h4#modal-about-this-site-title.modal-title Edit
           .modal-body
-            textarea.form-control(rows="10", cols="20", placeholder="稍后将支持 Markdown 语法", ng-bind="repo.notes", ng-model="notes")
+            textarea.form-control(rows="10", cols="20", placeholder="支持 Markdown 语法", ng-bind="repo.notes", ng-model="notes")
           .modal-footer
             button.btn.btn-default(type="button", data-dismiss="modal") Close
             button.btn.btn-primary(type="button", ng-click="updateNotes(notes)") Save

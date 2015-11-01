@@ -154,6 +154,24 @@
         };
     });
 
+    app.directive('markdown2html', function() {
+        return {
+            restrict: 'A',
+            socpe: {
+                markdown2html: '='
+            },
+            link: function($scope, $element, $attrs) {
+                $scope.$watch($attrs.markdown2html, function(value) {
+                    if (!value) return;
+
+                    value = window.markdown.toHTML(value);
+
+                    $element.html(value);
+                });
+            }
+        }
+    });
+
     /**
      * @description: 标签过滤器
      * @return: 返回包含指定标签的 repos
