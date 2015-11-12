@@ -22,7 +22,7 @@
 ![标签管理](./demo/tags.png)
 
 #### 0. 环境依赖
-该项目依赖 [node](https://nodejs.org/)、[npm](https://www.npmjs.com/)、[bower](https://github.com/bower/bower)、[mongodb](https://www.mongodb.org/) 环境,  并请确保 `mongodb`环境处于开启状态.
+该项目依赖 [node](https://nodejs.org/)、[npm](https://www.npmjs.com/)、[bower](https://github.com/bower/bower)、[mongodb](https://www.mongodb.org/) 、[redis](http://redis.io/) 环境,  并请确保 `mongodb`环境处于开启状态.
 
 #### 1. 安装依赖
 1. `Clone` 项目到本地.

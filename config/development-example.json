@@ -8,5 +8,9 @@
     "mongodb": {
         "host": "localhost",
         "name": "myStars"
+    },
+    "redis": {
+        "port": "PORT",
+        "host": "HOST"
     }
 }

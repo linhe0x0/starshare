@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var flash = require('connect-flash');
 
 var passport = require('passport');
@@ -42,9 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // 启用 session
 app.use(session({
     secret: 'myStars',
-    cookie: {
-        maxAge: 1000*60*60*24
-    },
+    store: new RedisStore(config.redis),
     resave: false,
     saveUninitialized: false
 }));
